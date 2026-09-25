@@ -4,7 +4,7 @@ An 8-bit Spotify remote for the R36S (and similar ArkOS / dArkOS handhelds). Con
 
 🇮🇹 *Leggi questa guida in italiano: [README.it.md](./Read%20me%20en%20-%20it/README.it.md)*
 
-![Spotify Deck running on an R36S](docs/screenshot.png)
+![Spotify Deck running on an R36S](./Read%20me%20en%20-%20it/en_01_player.png)
 
 ## Features
 
