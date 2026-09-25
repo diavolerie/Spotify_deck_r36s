@@ -46,6 +46,7 @@ Alternative if the browser can't reach the console/PC automatically:
 ```bash
 python3 get_token.py --manual
 ```
+
 (paste the final redirect URL when prompted)
 
 > **Note:** as of July 2026, Spotify expires this login after **6 months**. The app warns you two weeks ahead of time (and Menu → SPOTIFY shows the days remaining). When it expires, just rerun `get_token.py` and copy the new `config.json` over. You'll also need to redo it whenever the app requests a new permission scope (e.g. the SPOTIFY library section, or "ADD TO FAVOURITES" in the menu).
@@ -55,11 +56,12 @@ python3 get_token.py --manual
 ```bash
 python3 get_token.py --lang it YOUR_CLIENT_ID
 ```
+
 Available codes: `en it es fr de pt ru`.
 
 ## Installing on the console
 
-Same layout as other pygame-based tools:
+Same layout as other pygame-based tools (e.g. Sticker Printer):
 
 1. Copy **`Spotify Deck.sh`** and the **`spotify_deck/`** folder together, unmodified, into the console's `tools` folder: `/roms2/tools/` (or `/roms/tools/`).
 2. Copy the `config.json` you generated in step 2 above into `spotify_deck/` (next to `spotify_deck.py`).
@@ -99,21 +101,21 @@ All buttons work in every view. The "GO-Super Gamepad" pad is pre-mapped (D-pad,
 
 The menu opens with **Start**:
 
-![Menu](docs/en_04_menu.png)
+![Menu](./Read%20me%20en%20-%20it/en_04_menu.png)
 
 ## Views
 
 - **Player** — cover art + title + volume + progress bar
 
-  ![Player view](docs/en_01_player.png)
+  ![Player view](./Read%20me%20en%20-%20it/en_01_player.png)
 
 - **Cover** — full-screen 240×240 cover with an 8-bit filter, volume on the left, status on the right, a thin progress bar at the bottom. Title/artist appear briefly on track change or when you press A, L1, R1.
 
-  ![Full-screen cover view](docs/en_02_copertina.png)
+  ![Full-screen cover view](./Read%20me%20en%20-%20it/en_02_copertina.png)
 
 - **Lyrics** — synced lyrics, current line highlighted, auto-scroll. If a song's lyrics aren't time-synced, it scrolls approximately based on elapsed time. Lyrics come from LRCLIB (not every track has them). If lines feel early/late: Menu → SYNC LYRICS.
 
-  ![Synced lyrics view](docs/en_03_testo.png)
+  ![Synced lyrics view](./Read%20me%20en%20-%20it/en_03_testo.png)
 
 The last view you used is remembered on next launch.
 
@@ -121,12 +123,12 @@ The last view you used is remembered on next launch.
 
 - **Search** — on-screen keyboard (D-pad moves, A types, B deletes, X space, Y clear, Start search). Results split into tracks/artists/albums/playlists, max 10 each (Spotify's own limit).
 
-  ![Search keyboard](docs/en_05_ricerca.png)
+  ![Search keyboard](./Read%20me%20en%20-%20it/en_05_ricerca.png)
 
 - **Liked songs**, **Playlists** (yours + followed), **Followed artists** → albums & singles → tracks, **Saved albums** → tracks, **Recently played**, **Top tracks**, **Top artists** (last ~6 months).
 - In lists: Up/Down scroll, Left/Right jump by 8, A open/play, X add to queue, B back, Start return to player.
 
-  ![Example results list](docs/en_06_libreria.png)
+  ![Example results list](./Read%20me%20en%20-%20it/en_06_libreria.png)
 
 - Long lists load 50 at a time ("LOAD MORE" at the bottom).
 - Spotify limits (2026): you can only see a playlist's track list for **your own** playlists; for others' playlists you only get "PLAY PLAYLIST". An artist's "top tracks" no longer exists in the API — you get albums plus "PLAY ARTIST".
@@ -140,7 +142,7 @@ NES, Game Boy, Game Boy Pocket, PS1, C64. Menu → 8-BIT COVER / DITHERING / CRT
 
 A QR code linking to the author's Instagram, generated entirely by the app itself (`qr.py`, no external service, so it never expires). Colours follow the active theme and only boost contrast automatically if needed for a reliable scan.
 
-![Info screen with QR code](docs/en_07_info.png)
+![Info screen with QR code](./Read%20me%20en%20-%20it/en_07_info.png)
 
 ## Languages
 
@@ -165,17 +167,20 @@ No coding needed:
 pip install pygame
 python3 spotify_deck.py --demo
 ```
+
 Arrow keys = D-pad, Z=A, X=B, A=X, S=Y, Q=L1, W=R1, Enter=Start, Backspace=Select.
 
 ## Troubleshooting
 
 - **Won't start:** check `spotify_deck/log.txt` in the app folder.
 - **Black screen, no errors:** EmulationStation is holding the DRM device. Run from SSH:
+
   ```bash
   sudo systemctl stop emulationstation.service
   cd /roms2/tools/spotify_deck && SDL_VIDEODRIVER=kmsdrm python3 spotify_deck.py
   sudo systemctl start emulationstation.service
   ```
+
 - **"NO ACTIVE DEVICE":** open Spotify on your PC/phone and start a track once, then Menu → Devices.
 - **Volume control doesn't work on some devices** (e.g. iPhone): a Spotify API limitation, not fixable here.
 - **New Spotify system doesn't appear in EmulationStation:** did you restart EmulationStation/reboot after the very first launch? Check `spotify_deck/log.txt` for the `[install_es_entry]` lines — they say exactly what happened, including the `es_systems.cfg` path it used.
