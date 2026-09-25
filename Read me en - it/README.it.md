@@ -2,9 +2,9 @@
 
 Un telecomando Spotify 8-bit per R36S (e handheld ArkOS/dArkOS simili). Comanda play/pausa, volume, avanti/indietro nel brano, shuffle, repeat, dispositivo e playlist dalla console; l'audio esce dal dispositivo che scegli (PC, telefono, speaker...). Serve **Spotify Premium** (limite imposto dalle API di Spotify, non da questa app).
 
-🇬🇧 *Read this guide in English: [README.md](README.md)*
+🇬🇧 *Read this guide in English: [README.md](../README.md)*
 
-![Spotify Deck su un R36S](docs/screenshot.png)
+![Spotify Deck su un R36S](./01_player.png)
 
 ## Funzioni
 
@@ -46,6 +46,7 @@ Alternativa, se il browser non riesce a raggiungere console/PC automaticamente:
 ```bash
 python3 get_token.py --manual
 ```
+
 (incolla l'URL finale di redirect quando richiesto)
 
 > **Attenzione:** da luglio 2026 Spotify fa scadere questo login dopo **6 mesi**. L'app ti avvisa due settimane prima (e in Menu → SPOTIFY vedi i giorni rimasti). Quando scade, rilancia `get_token.py` e ricopia il nuovo `config.json`. Va rifatto anche quando l'app chiede un nuovo permesso (es. la sezione SPOTIFY con la libreria, o "AGGIUNGI AI PREFERITI" nel menu).
@@ -55,6 +56,7 @@ python3 get_token.py --manual
 ```bash
 python3 get_token.py --lang it IL_TUO_CLIENT_ID
 ```
+
 Codici disponibili: `en it es fr de pt ru`.
 
 ## Installazione sulla console
@@ -99,21 +101,21 @@ Tutti i comandi funzionano in tutte le viste. Il pad "GO-Super Gamepad" è già 
 
 Il menu si apre con **Start**:
 
-![Menu](docs/04_menu.png)
+![Menu](./04_menu.png)
 
 ## Viste
 
 - **Player** — copertina + titolo + volume + barra di avanzamento
 
-  ![Vista player](docs/01_player.png)
+  ![Vista player](./01_player.png)
 
 - **Copertina** — copertina 240×240 a tutto schermo con filtro 8-bit, volume a sinistra, stato a destra, barra sottile in fondo. Titolo/artista compaiono per qualche secondo al cambio brano o quando premi A, L1, R1.
 
-  ![Vista copertina a tutto schermo](docs/02_copertina.png)
+  ![Vista copertina a tutto schermo](./02_copertina.png)
 
 - **Testo** — testo del brano, riga corrente evidenziata, scorrimento automatico. Se il testo non è sincronizzato scorre in modo approssimato in base ai minuti del brano. I testi vengono da LRCLIB (non disponibili per tutti i brani). Se le righe arrivano troppo presto/tardi: Menu → SYNC TESTO.
 
-  ![Vista testo sincronizzato](docs/03_testo.png)
+  ![Vista testo sincronizzato](./03_testo.png)
 
 L'ultima vista usata viene ricordata al prossimo avvio.
 
@@ -121,12 +123,12 @@ L'ultima vista usata viene ricordata al prossimo avvio.
 
 - **Cerca** — tastiera a schermo (D-pad muove, A scrive, B cancella, X spazio, Y svuota, Start cerca). Risultati divisi in brani/artisti/album/playlist, max 10 ciascuno (limite imposto da Spotify).
 
-  ![Tastiera di ricerca](docs/05_ricerca.png)
+  ![Tastiera di ricerca](./05_ricerca.png)
 
 - **Brani preferiti**, **Playlist** (tue + seguite), **Artisti seguiti** → album e singoli → brani, **Album salvati** → brani, **Ascoltati di recente**, **Top brani**, **Top artisti** (ultimi ~6 mesi).
 - Nelle liste: Su/Giù scorri, Sinistra/Destra salta di 8, A apri/riproduci, X aggiungi in coda, B indietro, Start torna al player.
 
-  ![Esempio di lista risultati](docs/06_libreria.png)
+  ![Esempio di lista risultati](./06_libreria.png)
 
 - Le liste lunghe caricano 50 alla volta ("CARICA ALTRI" in fondo).
 - Limiti di Spotify (2026): l'elenco dei brani di una playlist si vede solo per le **tue** playlist; per quelle di altri c'è solo "RIPRODUCI PLAYLIST". I "brani più famosi" di un artista non esistono più nelle API: si vedono gli album e c'è "RIPRODUCI ARTISTA".
@@ -140,7 +142,7 @@ NES, Game Boy, Game Boy Pocket, PS1, C64. Menu → COPERTINA 8-BIT / DITHERING /
 
 Una schermata con un QR code verso l'Instagram dell'autore, generato interamente dall'app stessa (`qr.py`, nessun servizio esterno, quindi non scade mai). I colori seguono il tema attivo e alzano automaticamente il contrasto solo se serve per una scansione affidabile.
 
-![Schermata Info con QR](docs/07_info.png)
+![Schermata Info con QR](./07_info.png)
 
 ## Lingue
 
@@ -165,17 +167,20 @@ Non serve programmare:
 pip install pygame
 python3 spotify_deck.py --demo
 ```
+
 Frecce = D-pad, Z=A, X=B, A=X, S=Y, Q=L1, W=R1, Invio=Start, Backspace=Select.
 
 ## Problemi
 
 - **Non parte:** guarda `spotify_deck/log.txt` nella cartella dell'app.
 - **Schermo nero senza errori:** EmulationStation tiene il DRM. Lancia da SSH:
+
   ```bash
   sudo systemctl stop emulationstation.service
   cd /roms2/tools/spotify_deck && SDL_VIDEODRIVER=kmsdrm python3 spotify_deck.py
   sudo systemctl start emulationstation.service
   ```
+
 - **"NESSUN DISPOSITIVO ATTIVO":** apri Spotify sul PC/telefono e fai partire un brano una volta, poi Menu → Dispositivi.
 - **Il volume non funziona su alcuni dispositivi** (es. iPhone): limite delle API di Spotify, non risolvibile lato app.
 - **Il sistema Spotify non compare in EmulationStation:** hai riavviato EmulationStation/la console dopo il primissimo avvio? Controlla le righe `[install_es_entry]` in `spotify_deck/log.txt`: dicono esattamente cos'ha fatto, incluso il percorso di `es_systems.cfg` usato.
