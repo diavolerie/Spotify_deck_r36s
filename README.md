@@ -2,7 +2,7 @@
 
 An 8-bit Spotify remote for the R36S (and similar ArkOS / dArkOS handhelds). Control playback, volume, seek, shuffle, repeat, device and playlists from the console; the audio plays on whichever device you pick (PC, phone, speaker...). Requires **Spotify Premium** (a limitation of the Spotify API, not of this app).
 
-🇮🇹 *Leggi questa guida in italiano: [README.it.md](README.it.md)*
+🇮🇹 *Leggi questa guida in italiano: [README.it.md](./Read%20me%20en%20-%20it/README.it.md)*
 
 ![Spotify Deck running on an R36S](docs/screenshot.png)
 
@@ -59,7 +59,7 @@ Available codes: `en it es fr de pt ru`.
 
 ## Installing on the console
 
-Same layout as other pygame-based tools (e.g. Sticker Printer):
+Same layout as other pygame-based tools:
 
 1. Copy **`Spotify Deck.sh`** and the **`spotify_deck/`** folder together, unmodified, into the console's `tools` folder: `/roms2/tools/` (or `/roms/tools/`).
 2. Copy the `config.json` you generated in step 2 above into `spotify_deck/` (next to `spotify_deck.py`).
